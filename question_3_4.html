@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3. Which crops grow the best in each soil type? – AVCAD 2025 Dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">AVCAD 2025 Dashboard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.qmd"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#create-bar-plot-of-crops-for-each-soil-type" id="toc-create-bar-plot-of-crops-for-each-soil-type" class="nav-link active" data-scroll-target="#create-bar-plot-of-crops-for-each-soil-type">create bar plot of crops for each soil type</a></li>
+  <li><a href="#does-the-type-of-cover-crop-chosen-affect-the-answer-for-q3" id="toc-does-the-type-of-cover-crop-chosen-affect-the-answer-for-q3" class="nav-link" data-scroll-target="#does-the-type-of-cover-crop-chosen-affect-the-answer-for-q3">4.Does the type of cover crop chosen affect the answer for Q3?</a>
+  <ul class="collapse">
+  <li><a href="#plots-of-crop-yield-per-soil-family-and-cover-crop" id="toc-plots-of-crop-yield-per-soil-family-and-cover-crop" class="nav-link" data-scroll-target="#plots-of-crop-yield-per-soil-family-and-cover-crop">Plots of crop yield per soil family and cover crop</a></li>
+  <li><a href="#check-significance-of-yieldgrain-crop-groupcover-crop-group-relationships" id="toc-check-significance-of-yieldgrain-crop-groupcover-crop-group-relationships" class="nav-link" data-scroll-target="#check-significance-of-yieldgrain-crop-groupcover-crop-group-relationships">Check significance of yield/grain crop group/cover crop group relationships</a></li>
+  </ul></li>
+  <li><a href="#additionally-analyse-to-check-if-cover-crops-effect-crop-yield-not-considering-soil-family" id="toc-additionally-analyse-to-check-if-cover-crops-effect-crop-yield-not-considering-soil-family" class="nav-link" data-scroll-target="#additionally-analyse-to-check-if-cover-crops-effect-crop-yield-not-considering-soil-family">additionally, analyse to check if cover crops effect crop yield (not considering soil family)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">3. Which crops grow the best in each soil type?</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-2" class="cell" data-outputid="4983ebd2-a68e-4163-ba9a-f505614a1f30" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file first</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>jinshijian<span class="op">/</span>SoilHealthDB<span class="op">/</span>master<span class="op">/</span>data<span class="op">/</span>SoilHealthDB_V2.csv</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the downloaded CSV file</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'SoilHealthDB_V2.csv'</span>, encoding<span class="op">=</span><span class="st">'latin-1'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows to verify</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--2025-07-11 17:44:54--  https://raw.githubusercontent.com/jinshijian/SoilHealthDB/master/data/SoilHealthDB_V2.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3545298 (3.4M) [application/octet-stream]
+Saving to: ‘SoilHealthDB_V2.csv’
+
+SoilHealthDB_V2.csv 100%[===================&gt;]   3.38M  9.38MB/s    in 0.4s    
+
+2025-07-11 17:44:56 (9.38 MB/s) - ‘SoilHealthDB_V2.csv’ saved [3545298/3545298]
+
+   StudyID ExperimentID Author_F Author_G  YearPublication  SamplingYear  \
+0        1        1-Jan    Abawi     G.S.             2000           NaN   
+1        1        1-Jan    Abawi     G.S.             2000           NaN   
+2        1        2-Jan    Abawi     G.S.             2000           NaN   
+3        1        1-Jan    Abawi     G.S.             2000           NaN   
+4        1        4-Jan    Abawi     G.S.             2000           NaN   
+
+                Journal SiteInfor Country  Latitude  ...  MBN_C_SD  MBN_T_SD  \
+0  Applied Soil Ecology  New York     USA     40.71  ...       NaN       NaN   
+1  Applied Soil Ecology  New York     USA     40.71  ...       NaN       NaN   
+2  Applied Soil Ecology  New York     USA     40.71  ...       NaN       NaN   
+3  Applied Soil Ecology  New York     USA     40.71  ...       NaN       NaN   
+4  Applied Soil Ecology  New York     USA     40.71  ...       NaN       NaN   
+
+   38.MBN_Comments  Microelement  SQI  ESS Texture_C             Comments1  \
+0              NaN           NaN  NaN  NaN       NaN  Root infected by rot   
+1              NaN           NaN  NaN  NaN       NaN  Root infected by rot   
+2              NaN           NaN  NaN  NaN       NaN  Root infected by rot   
+3              NaN           NaN  NaN  NaN       NaN  Root infected by rot   
+4              NaN           NaN  NaN  NaN       NaN  Root infected by rot   
+
+   Comments2 Comments3  
+0        NaN       NaN  
+1        NaN       NaN  
+2        NaN       NaN  
+3        NaN       NaN  
+4        NaN       NaN  
+
+[5 rows x 270 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipython-input-2-2313439922.py:5: DtypeWarning: Columns (16,19,20,24,25,52,77,122,150,152,160,192,197,212,232,237,242,247,252,262,265,266) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv('SoilHealthDB_V2.csv', encoding='latin-1')</code></pre>
+</div>
+</div>
+<p>Create a df of the soil types column, the crop column, and the covercrop column, and crop yield if it exists. Remember the db has two on each row. Conventional and covercrop/organic. Fields to use: - SoilFamily (soil type is missing a lot of data) - GrainCropGroup (as there are so many mixed records where it is unclear if they are grown in rotation or both grown regularly) - CoverCropGroup (as is more important that a cover crop is used, and is difficult to normalise when multiple covercrops are used) - Yield_C, Yield_T: though the units are not always the same. kg/hm2 unless comments say otherwise, so need comments and remove records where not kg/hm2 (or convert, but there aren’t many records of this)</p>
+<div id="cell-5" class="cell" data-outputid="c8eda139-f1a6-42de-c7f4-848fba5db65b" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the new dataframe with the specified columns</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> df[[</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SoilFamily'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GrainCropGroup'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CoverCropGroup'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Yield_C'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Yield_T'</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>]]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the new dataframe</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.head())</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Display info about the new dataframe to check for missing values and data types</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  SoilFamily GrainCropGroup CoverCropGroup  Yield_C  Yield_T
+0        NaN            MTT         Legume      NaN      NaN
+1        NaN            MTT         Legume      NaN      NaN
+2        NaN            MTT       Brassica   4862.0   3990.0
+3        NaN            MTT         Legume      NaN      NaN
+4        NaN            MTT            Rye      NaN      NaN
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 5907 entries, 0 to 5906
+Data columns (total 5 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      4258 non-null   object 
+ 1   GrainCropGroup  5616 non-null   object 
+ 2   CoverCropGroup  5062 non-null   object 
+ 3   Yield_C         2382 non-null   float64
+ 4   Yield_T         2381 non-null   float64
+dtypes: float64(2), object(3)
+memory usage: 230.9+ KB
+None</code></pre>
+</div>
+</div>
+<p>As the questions are about soil type and crop, these fields cannot be null</p>
+<div id="cell-7" class="cell" data-outputid="43f3c082-a676-4c94-a666-821081afdd51" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove rows where SoilFamily or GrainCrop is missing</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> df_subset.dropna(subset<span class="op">=</span>[<span class="st">'SoilFamily'</span>, <span class="st">'GrainCropGroup'</span>, <span class="st">'Yield_C'</span>, <span class="st">'Yield_T'</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display info about the cleaned dataframe to check for missing values</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 1713 entries, 13 to 5906
+Data columns (total 5 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      1713 non-null   object 
+ 1   GrainCropGroup  1713 non-null   object 
+ 2   CoverCropGroup  1652 non-null   object 
+ 3   Yield_C         1713 non-null   float64
+ 4   Yield_T         1713 non-null   float64
+dtypes: float64(2), object(3)
+memory usage: 80.3+ KB
+None</code></pre>
+</div>
+</div>
+<div id="cell-8" class="cell" data-outputid="462fbb86-ae4d-4535-9af3-59e69fafd9e8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate the dataframe into two based on yield type</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_T <span class="op">=</span> df_subset.copy()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_C <span class="op">=</span> df_subset.copy()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns to have '_T' and '_C' suffixes</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df_T <span class="op">=</span> df_T.rename(columns<span class="op">=</span>{<span class="st">'Yield_T'</span>: <span class="st">'Yield'</span>})</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df_C <span class="op">=</span> df_C.rename(columns<span class="op">=</span>{<span class="st">'Yield_C'</span>: <span class="st">'Yield'</span>})</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column 'Treatment' to identify the source</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df_T[<span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'_T'</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>df_C[<span class="st">'Treatment'</span>] <span class="op">=</span> <span class="st">'_C'</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set 'CoverCropGroup' to 'None' for '_C' records</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>df_C[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> <span class="st">'None'</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the original yield columns that are no longer needed</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>df_T <span class="op">=</span> df_T.drop(columns<span class="op">=</span>[<span class="st">'Yield_C'</span>])</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>df_C <span class="op">=</span> df_C.drop(columns<span class="op">=</span>[<span class="st">'Yield_T'</span>])</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate the two dataframes back together</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> pd.concat([df_T, df_C], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the combined dataframe</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.head())</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display info about the combined dataframe</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   SoilFamily GrainCropGroup CoverCropGroup    Yield Treatment
+0  Haplustoll      Vegetable            Rye  23300.0        _T
+1  Haplustoll      Vegetable          Grass  19800.0        _T
+2  Haplustoll      Vegetable          Grass  19600.0        _T
+3  Haplustoll      Vegetable            Rye  21400.0        _T
+4  Haplustoll      Vegetable          Grass  18000.0        _T
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 3426 entries, 0 to 3425
+Data columns (total 5 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      3426 non-null   object 
+ 1   GrainCropGroup  3426 non-null   object 
+ 2   CoverCropGroup  3365 non-null   object 
+ 3   Yield           3426 non-null   float64
+ 4   Treatment       3426 non-null   object 
+dtypes: float64(1), object(4)
+memory usage: 134.0+ KB
+None</code></pre>
+</div>
+</div>
+<p>clean the grain crop groups</p>
+<div id="cell-10" class="cell" data-outputid="9fda0795-400c-433b-c3bf-11c2e8e54e57" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset[<span class="st">'GrainCropGroup'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Vegetable' 'Wheat-oat' 'Soybean' 'Sorghum' 'Wheat' 'Corn' 'Corn-oat'
+ 'Corn-soybean-wheat' 'Corn-soybean' 'Arable' 'Corn-wheat-millet'
+ 'Corn-wheat' 'Maize' 'Orchard' 'Unknown' 'Pasture']</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-outputid="2322a743-6c16-4f41-8088-73e5fd3829fa" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df_combined['GrainCropGroup'] = df_combined['GrainCropGroup'].replace(['Corn', 'Soybean', 'Wheat','Arable'], 'Monoculture')</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace([<span class="st">'CS'</span>,<span class="st">'CSO'</span>], <span class="st">'Corn-soybean'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace(<span class="st">'CW'</span>, <span class="st">'Corn-wheat'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace( <span class="st">'CO'</span>, <span class="st">'Corn-oat'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace(<span class="st">'WO'</span>, <span class="st">'Wheat-oat'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace(<span class="st">'CWO'</span>, <span class="st">'Corn-wheat-millet'</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace(<span class="st">'CSW'</span>, <span class="st">'Corn-soybean-wheat'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace([<span class="st">'AVG'</span>,<span class="st">'Other'</span>], <span class="st">'Unknown'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">=</span> df_subset[<span class="st">'GrainCropGroup'</span>].replace([<span class="st">'CV'</span>,<span class="st">'CVO'</span>, <span class="st">'WV'</span>], <span class="st">'Vegetable'</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> df_subset[df_subset[<span class="st">'GrainCropGroup'</span>] <span class="op">!=</span> <span class="st">'MTT'</span>]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset[<span class="st">'GrainCropGroup'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Vegetable' 'Soybean' 'Corn' 'Corn-oat' 'Sorghum' 'Corn-soybean'
+ 'Corn-soybean-wheat' 'Arable' 'Wheat' 'Wheat-oat' 'Corn-wheat' 'Maize'
+ 'Orchard' 'Unknown' 'Pasture']</code></pre>
+</div>
+</div>
+<p>Normalise and scale data</p>
+<div id="cell-13" class="cell" data-outputid="62020897-2dcc-4a96-b4ab-425c296d16fa" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the MinMaxScaler</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the scaler to the 'Yield' column</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_subset[<span class="st">'Yield_scaled'</span>] <span class="op">=</span> scaler.fit_transform(df_subset[[<span class="st">'Yield'</span>]])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows with the new scaled column</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.head())</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display info to check the new column</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_subset.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   SoilFamily GrainCropGroup CoverCropGroup    Yield Treatment  Yield_scaled
+0  Haplustoll      Vegetable            Rye  23300.0        _T      0.250537
+1  Haplustoll      Vegetable          Grass  19800.0        _T      0.212903
+2  Haplustoll      Vegetable          Grass  19600.0        _T      0.210752
+3  Haplustoll      Vegetable            Rye  21400.0        _T      0.230107
+4  Haplustoll      Vegetable          Grass  18000.0        _T      0.193548
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 3404 entries, 0 to 3425
+Data columns (total 6 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      3404 non-null   object 
+ 1   GrainCropGroup  3404 non-null   object 
+ 2   CoverCropGroup  3343 non-null   object 
+ 3   Yield           3404 non-null   float64
+ 4   Treatment       3404 non-null   object 
+ 5   Yield_scaled    3404 non-null   float64
+dtypes: float64(2), object(4)
+memory usage: 186.2+ KB
+None</code></pre>
+</div>
+</div>
+<p>There are a lot of soil types, so to simplify, the eight soil types with the most data will be visualised. It would be good to group the soil and ananlyse it, but a greater knowledge of soil types is needed.</p>
+<div id="cell-15" class="cell" data-outputid="a1a8906a-4afd-4a18-de43-81b2a73a571b" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>yield_summary <span class="op">=</span> df_subset.groupby(<span class="st">"GrainCropGroup"</span>)[<span class="st">"Yield"</span>].describe()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>display(yield_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+  <div id="df-eeb18e8b-587c-46be-91c0-6f30891f514f" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">GrainCropGroup</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Arable</td>
+<td>306.0</td>
+<td>2509.983660</td>
+<td>2269.252545</td>
+<td>231.000</td>
+<td>970.75000</td>
+<td>2151.5000</td>
+<td>2994.25000</td>
+<td>13300.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Corn</td>
+<td>1836.0</td>
+<td>2994.914352</td>
+<td>2752.843685</td>
+<td>1.910</td>
+<td>1300.00000</td>
+<td>2257.0000</td>
+<td>3666.25000</td>
+<td>19610.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Corn-oat</td>
+<td>82.0</td>
+<td>7220.219512</td>
+<td>2391.680560</td>
+<td>1260.000</td>
+<td>6701.00000</td>
+<td>7471.0000</td>
+<td>8826.00000</td>
+<td>10843.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Corn-soybean</td>
+<td>44.0</td>
+<td>6702.272727</td>
+<td>4099.148445</td>
+<td>1700.000</td>
+<td>2700.00000</td>
+<td>5400.0000</td>
+<td>9925.00000</td>
+<td>13300.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Corn-soybean-wheat</td>
+<td>6.0</td>
+<td>9305.555667</td>
+<td>167.590156</td>
+<td>9066.667</td>
+<td>9186.11075</td>
+<td>9355.5555</td>
+<td>9433.33375</td>
+<td>9466.667</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Corn-wheat</td>
+<td>2.0</td>
+<td>13300.000000</td>
+<td>212.132034</td>
+<td>13150.000</td>
+<td>13225.00000</td>
+<td>13300.0000</td>
+<td>13375.00000</td>
+<td>13450.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Maize</td>
+<td>38.0</td>
+<td>2410.157895</td>
+<td>2368.133151</td>
+<td>152.000</td>
+<td>455.00000</td>
+<td>1605.0000</td>
+<td>3776.50000</td>
+<td>7642.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Orchard</td>
+<td>42.0</td>
+<td>21847.630714</td>
+<td>17405.807204</td>
+<td>0.080</td>
+<td>13093.75000</td>
+<td>18950.0000</td>
+<td>23925.00000</td>
+<td>72000.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Pasture</td>
+<td>4.0</td>
+<td>4425.595000</td>
+<td>3274.644370</td>
+<td>852.380</td>
+<td>2215.59500</td>
+<td>4365.0000</td>
+<td>6575.00000</td>
+<td>8120.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Sorghum</td>
+<td>72.0</td>
+<td>3806.111111</td>
+<td>1170.539247</td>
+<td>1980.000</td>
+<td>2870.00000</td>
+<td>3515.0000</td>
+<td>4730.00000</td>
+<td>7140.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Soybean</td>
+<td>158.0</td>
+<td>2738.524241</td>
+<td>2122.808791</td>
+<td>810.000</td>
+<td>1882.50000</td>
+<td>2260.0000</td>
+<td>3257.50000</td>
+<td>12300.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Unknown</td>
+<td>94.0</td>
+<td>5566.454894</td>
+<td>3778.772151</td>
+<td>89.970</td>
+<td>2675.00000</td>
+<td>5350.0000</td>
+<td>7710.00000</td>
+<td>14030.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Vegetable</td>
+<td>512.0</td>
+<td>15054.136719</td>
+<td>20615.560454</td>
+<td>3.000</td>
+<td>1440.00000</td>
+<td>6300.0000</td>
+<td>19225.00000</td>
+<td>93000.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Wheat</td>
+<td>198.0</td>
+<td>3295.323232</td>
+<td>2614.508288</td>
+<td>407.000</td>
+<td>2290.75000</td>
+<td>2701.5000</td>
+<td>3480.00000</td>
+<td>15700.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Wheat-oat</td>
+<td>10.0</td>
+<td>3828.000000</td>
+<td>1207.530078</td>
+<td>1510.000</td>
+<td>3952.50000</td>
+<td>4305.0000</td>
+<td>4467.50000</td>
+<td>4830.000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-eeb18e8b-587c-46be-91c0-6f30891f514f')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-eeb18e8b-587c-46be-91c0-6f30891f514f button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-eeb18e8b-587c-46be-91c0-6f30891f514f');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-12617d3b-9c63-4a0e-9d27-02c8ac126d47">
+      <button class="colab-df-quickchart" onclick="quickchart('df-12617d3b-9c63-4a0e-9d27-02c8ac126d47')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-12617d3b-9c63-4a0e-9d27-02c8ac126d47 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_cb5d58dd-461b-49df-b934-29126a1771f5">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('yield_summary')" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_cb5d58dd-461b-49df-b934-29126a1771f5 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('yield_summary');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div id="cell-16" class="cell" data-outputid="8ade0915-bb76-4b1d-e4f7-0efd82b6eb68" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify rows with non-null 'Yield'</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_subset_with_yield <span class="op">=</span> df_subset.dropna(subset<span class="op">=</span>[<span class="st">'Yield'</span>])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>top8_soil <span class="op">=</span> df_subset_with_yield[<span class="st">'SoilFamily'</span>].value_counts().nlargest(<span class="dv">8</span>).index.tolist()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe containing only records from the top 8 soil families</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>df_top8_soil <span class="op">=</span> df_subset_with_yield[df_subset_with_yield[<span class="st">'SoilFamily'</span>].isin(top8_soil)].copy()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display info about the new dataframe</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_top8_soil.info())</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_top8_soil[<span class="st">'SoilFamily'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 1270 entries, 0 to 3207
+Data columns (total 6 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      1270 non-null   object 
+ 1   GrainCropGroup  1270 non-null   object 
+ 2   CoverCropGroup  1270 non-null   object 
+ 3   Yield           1270 non-null   float64
+ 4   Treatment       1270 non-null   object 
+ 5   Yield_scaled    1270 non-null   float64
+dtypes: float64(2), object(4)
+memory usage: 69.5+ KB
+None
+['Haplustoll' 'Typic Hapludulfs'
+ 'Clayey, skeletal, kaolinitic, isohyperthermic oxic paleustalf'
+ 'Oxic Hapleustalf' 'Ferric Luvisol (FAO)' 'Orthic Ferralsols (FAO)'
+ 'Ferric luviso!s' 'AlÞsols']</code></pre>
+</div>
+</div>
+<p>These eight soil types encompass more than a fifth of the records.</p>
+<div id="cell-18" class="cell" data-outputid="2db1c136-f42f-46f6-9ac1-4384d7c27443" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pivot table to count the occurrences of each GrainCropGroup within each SoilFamily</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>soil_crop_counts <span class="op">=</span> df_top8_soil.pivot_table(index<span class="op">=</span><span class="st">'SoilFamily'</span>, columns<span class="op">=</span><span class="st">'GrainCropGroup'</span>, aggfunc<span class="op">=</span><span class="st">'size'</span>, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>sns.heatmap(soil_crop_counts, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Relationship between SoilFamily and GrainCropGroup (Top 8 Soil Families)'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Grain Crop Group'</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Soil Family'</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The ‘best’ in this question has been decided as the highest yield, therefore a new df with no null yield values must be created, and then the highest yielding crop for each of the top 8 soil types will be chosen. Some only have one crop group, so this will also be the highest yielding.</p>
+<div id="cell-20" class="cell" data-outputid="839b2273-f704-4b12-b85a-782cc96b5d23" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_top8_soil[<span class="st">'SoilFamily'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Haplustoll' 'Typic Hapludulfs'
+ 'Clayey, skeletal, kaolinitic, isohyperthermic oxic paleustalf'
+ 'Oxic Hapleustalf' 'Ferric Luvisol (FAO)' 'Orthic Ferralsols (FAO)'
+ 'Ferric luviso!s' 'AlÞsols']</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell" data-outputid="5ae9fa24-a7ff-4f1b-afa4-d168b91b4061" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the yield data for each SoilFamily and GrainCropGroup combination</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>soil_crop_yield <span class="op">=</span> df_top8_soil.groupby([<span class="st">'SoilFamily'</span>, <span class="st">'GrainCropGroup'</span>])[<span class="st">'Yield'</span>].mean().reset_index()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>soil_crop_yield, x<span class="op">=</span><span class="st">'SoilFamily'</span>, y<span class="op">=</span><span class="st">'Yield'</span>, hue<span class="op">=</span><span class="st">'GrainCropGroup'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Yield per Soil Family and Grain Crop Group'</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Soil Family'</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Yield (kg/hm2)'</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Grain Crop Group'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are several issues here, most soil types don’t have more than one crop type, which means we can’t determine the best, as there is nothing to compare them to. Secondly Haplustoll has a much higher yield than most, which could be from bad data (it could be recorded in other units), or could be using a high intensity technique, such as vertical farming or greenhouses, which doesn’t necessarily mean Haplustoll soil is this good for growing vegetables in.</p>
+<p>It is better to use soil types which have data on three or more Grain crop groups, to be able to compare them.</p>
+<div id="cell-24" class="cell" data-outputid="cdc99333-6583-437f-c651-9a8dd5b0ed38" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify SoilFamily with at least two unique GrainCropGroup entries that have non-null 'Yield' data</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>soil_family_with_multiple_crops <span class="op">=</span> df_subset_with_yield.groupby(<span class="st">'SoilFamily'</span>)[<span class="st">'GrainCropGroup'</span>].nunique()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for SoilFamily where the number of unique GrainCropGroup is 2 or more</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>soil_families_with_multiple_yield_crops <span class="op">=</span> soil_family_with_multiple_crops[soil_family_with_multiple_crops <span class="op">&gt;=</span> <span class="dv">3</span>].index.tolist()</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Soil Families with Yield data for at least two Grain Crop Groups:"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_families_with_multiple_yield_crops)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a subset of the original dataframe containing only these SoilFamilies</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops <span class="op">=</span> df_subset_with_yield[df_subset_with_yield[<span class="st">'SoilFamily'</span>].isin(soil_families_with_multiple_yield_crops)].copy()</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DataFrame subset for Soil Families with multiple crops:"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_soil_multiple_crops.head())</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_soil_multiple_crops.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Soil Families with Yield data for at least two Grain Crop Groups:
+['Canfield silt loam (fine-loamy, mixed mesic Aquic Fragiudalf)', 'Dystric cambisol on granite bedrock', 'Haplic Luvisols', 'Haplic luvisol on calcareous bedrock', 'Mesic Vertic Epiaqualf', 'Typic Hapludult']
+
+DataFrame subset for Soil Families with multiple crops:
+                                            SoilFamily GrainCropGroup  \
+440  Canfield silt loam (fine-loamy, mixed mesic Aq...           Corn   
+441  Canfield silt loam (fine-loamy, mixed mesic Aq...           Corn   
+442  Canfield silt loam (fine-loamy, mixed mesic Aq...           Corn   
+443  Canfield silt loam (fine-loamy, mixed mesic Aq...           Corn   
+444  Canfield silt loam (fine-loamy, mixed mesic Aq...        Soybean   
+
+    CoverCropGroup    Yield Treatment  Yield_scaled  
+440            Rye  11100.0        _T      0.119354  
+441            Rye   6700.0        _T      0.072042  
+442            Rye  10100.0        _T      0.108601  
+443            Rye   8900.0        _T      0.095698  
+444            Rye  12100.0        _T      0.130107  
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 214 entries, 440 to 3390
+Data columns (total 6 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   SoilFamily      214 non-null    object 
+ 1   GrainCropGroup  214 non-null    object 
+ 2   CoverCropGroup  180 non-null    object 
+ 3   Yield           214 non-null    float64
+ 4   Treatment       214 non-null    object 
+ 5   Yield_scaled    214 non-null    float64
+dtypes: float64(2), object(4)
+memory usage: 11.7+ KB
+None</code></pre>
+</div>
+</div>
+<div id="cell-25" class="cell" data-outputid="84a42eca-f852-41a4-dc7c-9c5bd9016f7e" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'SoilFamily'</span>].replace(<span class="st">'Canfield silt loam (fine-loamy, mixed mesic Aquic Fragiudalf)'</span>, <span class="st">'Mesic Aquic Fragiudalf'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_soil_multiple_crops[<span class="st">'SoilFamily'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Mesic Aquic Fragiudalf' 'Dystric cambisol on granite bedrock'
+ 'Haplic luvisol on calcareous bedrock' 'Mesic Vertic Epiaqualf'
+ 'Haplic Luvisols' 'Typic Hapludult']</code></pre>
+</div>
+</div>
+<section id="create-bar-plot-of-crops-for-each-soil-type" class="level3">
+<h3 class="anchored" data-anchor-id="create-bar-plot-of-crops-for-each-soil-type">create bar plot of crops for each soil type</h3>
+<div id="cell-27" class="cell" data-outputid="3f55f429-1444-41d4-9e4d-3a9a9da41c4f" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>average_yield <span class="op">=</span> df_soil_multiple_crops.groupby([<span class="st">'SoilFamily'</span>, <span class="st">'GrainCropGroup'</span>])[<span class="st">'Yield'</span>].mean().reset_index()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the dataframe by SoilFamily to ensure consistent plotting order</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>average_yield_sorted <span class="op">=</span> average_yield.sort_values(<span class="st">'SoilFamily'</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar plot</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">9</span>)) <span class="co"># Adjusted figure size for better readability</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>average_yield_sorted, x<span class="op">=</span><span class="st">'SoilFamily'</span>, y<span class="op">=</span><span class="st">'Yield'</span>, hue<span class="op">=</span><span class="st">'GrainCropGroup'</span>, palette<span class="op">=</span><span class="st">'tab20'</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set title and labels</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Yield per Soil Family and Grain Crop Group (Soil Families with Multiple Crops)'</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Soil Family'</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Yield (kg/hm2)'</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rotate x-axis labels for better readability</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical lines to separate soil types</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the unique soil families and their positions on the x-axis</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>unique_soils <span class="op">=</span> average_yield_sorted[<span class="st">'SoilFamily'</span>].unique()</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add lines after each soil type except the last one</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(unique_soils) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    plt.axvline(x<span class="op">=</span>i <span class="op">+</span> <span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Grain Crop Group'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout to prevent labels from overlapping</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-28" class="cell" data-outputid="ef7d8f38-e1cf-4199-d629-d32f8a6677af" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the top GrainCropGroup for each SoilFamily in df_soil_multiple_crops</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>top_crops_per_soil <span class="op">=</span> df_soil_multiple_crops.loc[df_soil_multiple_crops.groupby(<span class="st">'SoilFamily'</span>)[<span class="st">'Yield'</span>].idxmax()]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top GrainCropGroup for each SoilFamily:"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top_crops_per_soil[[<span class="st">'SoilFamily'</span>, <span class="st">'GrainCropGroup'</span>, <span class="st">'Yield'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Top GrainCropGroup for each SoilFamily:
+                                SoilFamily GrainCropGroup    Yield
+509    Dystric cambisol on granite bedrock     Corn-wheat  13450.0
+1561                       Haplic Luvisols        Orchard  17250.0
+2226  Haplic luvisol on calcareous bedrock          Wheat  15700.0
+2157                Mesic Aquic Fragiudalf        Soybean  12300.0
+3251                Mesic Vertic Epiaqualf           Corn   6920.0
+1653                       Typic Hapludult           Corn  12180.0</code></pre>
+</div>
+</div>
+<p>Check if top crop group is significantly different to other crop groups in soil family</p>
+<div id="cell-30" class="cell" data-outputid="4f6c9160-f5c2-4e3d-f79d-484fbecdde58" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by SoilFamily and GrainCropGroup</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>grouped_yield <span class="op">=</span> df_soil_multiple_crops.groupby([<span class="st">'SoilFamily'</span>, <span class="st">'GrainCropGroup'</span>])[<span class="st">'Yield'</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through each SoilFamily with multiple crops</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soil_family <span class="kw">in</span> df_soil_multiple_crops[<span class="st">'SoilFamily'</span>].unique():</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Analyzing SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the data for the current SoilFamily</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    df_soil <span class="op">=</span> df_soil_multiple_crops[df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">==</span> soil_family].copy()</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the top crop for this soil type based on average yield</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    top_crop <span class="op">=</span> df_soil.groupby(<span class="st">'GrainCropGroup'</span>)[<span class="st">'Yield'</span>].mean().idxmax()</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Top Crop: </span><span class="sc">{</span>top_crop<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the yields for the top crop</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    yields_top_crop <span class="op">=</span> df_soil[df_soil[<span class="st">'GrainCropGroup'</span>] <span class="op">==</span> top_crop][<span class="st">'Yield'</span>]</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the yields for all other crops in this soil type</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    yields_other_crops <span class="op">=</span> df_soil[df_soil[<span class="st">'GrainCropGroup'</span>] <span class="op">!=</span> top_crop][<span class="st">'Yield'</span>]</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform independent t-test if both groups have enough data</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(yields_top_crop) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">len</span>(yields_other_crops) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Before performing t-test, check for equal variances using Levene's test</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If p-value from Levene's test is &lt; 0.05, assume unequal variances</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>            levene_statistic, levene_p_value <span class="op">=</span> stats.levene(yields_top_crop, yields_other_crops)</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>            equal_var <span class="op">=</span> levene_p_value <span class="op">&gt;=</span> <span class="fl">0.05</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  Levene's Test p-value: </span><span class="sc">{</span>levene_p_value<span class="sc">:.4f}</span><span class="ss"> (Assuming equal variances: </span><span class="sc">{</span>equal_var<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Perform t-test</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>            t_statistic, p_value <span class="op">=</span> stats.ttest_ind(yields_top_crop, yields_other_crops, equal_var<span class="op">=</span>equal_var)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  Independent t-test comparing </span><span class="sc">{</span>top_crop<span class="sc">}</span><span class="ss"> yield to other crop yields:"</span>)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"    T-statistic: </span><span class="sc">{</span>t_statistic<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"    P-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Interpret the result</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>            alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"    Result: The yield of </span><span class="sc">{</span>top_crop<span class="sc">}</span><span class="ss"> is significantly different from the yield of other crops in </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss"> soil (p &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"    Result: There is no statistically significant difference in yield between </span><span class="sc">{</span>top_crop<span class="sc">}</span><span class="ss"> and other crops in </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss"> soil (p &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  Could not perform t-test for </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Not enough data for statistical testing for </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss"> (need at least 2 samples in each group)."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Analyzing SoilFamily: Mesic Aquic Fragiudalf
+  Top Crop: Soybean
+  Levene's Test p-value: 0.0164 (Assuming equal variances: False)
+  Independent t-test comparing Soybean yield to other crop yields:
+    T-statistic: 3.7700
+    P-value: 0.0011
+    Result: The yield of Soybean is significantly different from the yield of other crops in Mesic Aquic Fragiudalf soil (p &lt; 0.05).
+
+Analyzing SoilFamily: Dystric cambisol on granite bedrock
+  Top Crop: Corn-wheat
+  Levene's Test p-value: 0.0605 (Assuming equal variances: True)
+  Independent t-test comparing Corn-wheat yield to other crop yields:
+    T-statistic: 2.2216
+    P-value: 0.0904
+    Result: There is no statistically significant difference in yield between Corn-wheat and other crops in Dystric cambisol on granite bedrock soil (p &gt;= 0.05).
+
+Analyzing SoilFamily: Haplic luvisol on calcareous bedrock
+  Top Crop: Wheat
+  Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+  Independent t-test comparing Wheat yield to other crop yields:
+    T-statistic: 5.1017
+    P-value: 0.0013
+    Result: The yield of Wheat is significantly different from the yield of other crops in Haplic luvisol on calcareous bedrock soil (p &lt; 0.05).
+
+Analyzing SoilFamily: Mesic Vertic Epiaqualf
+  Top Crop: Corn
+  Levene's Test p-value: 0.0003 (Assuming equal variances: False)
+  Independent t-test comparing Corn yield to other crop yields:
+    T-statistic: 3.9077
+    P-value: 0.0006
+    Result: The yield of Corn is significantly different from the yield of other crops in Mesic Vertic Epiaqualf soil (p &lt; 0.05).
+
+Analyzing SoilFamily: Haplic Luvisols
+  Top Crop: Orchard
+  Levene's Test p-value: 0.9541 (Assuming equal variances: True)
+  Independent t-test comparing Orchard yield to other crop yields:
+    T-statistic: 6.5605
+    P-value: 0.0000
+    Result: The yield of Orchard is significantly different from the yield of other crops in Haplic Luvisols soil (p &lt; 0.05).
+
+Analyzing SoilFamily: Typic Hapludult
+  Top Crop: Corn
+  Levene's Test p-value: 0.0013 (Assuming equal variances: False)
+  Independent t-test comparing Corn yield to other crop yields:
+    T-statistic: 3.3036
+    P-value: 0.0016
+    Result: The yield of Corn is significantly different from the yield of other crops in Typic Hapludult soil (p &lt; 0.05).</code></pre>
+</div>
+</div>
+</section>
+<section id="does-the-type-of-cover-crop-chosen-affect-the-answer-for-q3" class="level2">
+<h2 class="anchored" data-anchor-id="does-the-type-of-cover-crop-chosen-affect-the-answer-for-q3">4.Does the type of cover crop chosen affect the answer for Q3?</h2>
+<p>Clean each column - make sure there are not duplicate fields</p>
+<div id="cell-33" class="cell" data-outputid="74d30a7f-cc2d-4b11-a955-acec2a3d29e8" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Rye' 'Brassica' 'No' 'Mixed']</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-outputid="5ae16c89-08ed-4a9f-d4ff-7fd305c01649" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].replace([<span class="st">'LL'</span>, <span class="st">'Legume_Tree'</span>], <span class="st">'Legume'</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].replace([<span class="st">'LG'</span>, <span class="st">'BG'</span>, <span class="st">'AVG'</span>, <span class="st">'MOT'</span>], <span class="st">'Mixed'</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].replace(<span class="st">'Not_available'</span>, <span class="st">'Unknown'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].replace([<span class="st">'No'</span>, <span class="st">'None'</span>], <span class="st">'No'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>] <span class="op">=</span> df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].replace(<span class="st">'BroadleafTree'</span>, <span class="st">'Broadleaf'</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_soil_multiple_crops[<span class="st">'CoverCropGroup'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Rye' 'Brassica' 'No' 'Mixed']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipython-input-55-3554729350.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['CoverCropGroup'] = df_soil_multiple_crops['CoverCropGroup'].replace(['LL', 'Legume_Tree'], 'Legume')
+/tmp/ipython-input-55-3554729350.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['CoverCropGroup'] = df_soil_multiple_crops['CoverCropGroup'].replace(['LG', 'BG', 'AVG', 'MOT'], 'Mixed')
+/tmp/ipython-input-55-3554729350.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['CoverCropGroup'] = df_soil_multiple_crops['CoverCropGroup'].replace('Not_available', 'Unknown')
+/tmp/ipython-input-55-3554729350.py:4: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['CoverCropGroup'] = df_soil_multiple_crops['CoverCropGroup'].replace(['No', 'None'], 'No')
+/tmp/ipython-input-55-3554729350.py:5: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['CoverCropGroup'] = df_soil_multiple_crops['CoverCropGroup'].replace('BroadleafTree', 'Broadleaf')</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops <span class="op">=</span> df_soil_multiple_crops.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-36" class="cell" data-outputid="17a96ca3-18f7-4e8c-a797-764226227a99" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of records in df_soil_multiple_crops: </span><span class="sc">{</span><span class="bu">len</span>(df_soil_multiple_crops)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of records in df_soil_multiple_crops: 180</code></pre>
+</div>
+</div>
+<p>These soil families do not contain legume cover crops, which are found to have the highest influence on soil carbon, though this question does not consider soil carbon directly, legumes are known to fix nitrogen, and so it would be better to have some data on legume cover crops.</p>
+<section id="plots-of-crop-yield-per-soil-family-and-cover-crop" class="level3">
+<h3 class="anchored" data-anchor-id="plots-of-crop-yield-per-soil-family-and-cover-crop">Plots of crop yield per soil family and cover crop</h3>
+<div id="cell-39" class="cell" data-outputid="8d803156-6c03-43a5-eb01-18c25aa9b758" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Group the dataframe by SoilFamily and apply the scaler to the 'Yield' column within each group</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>df_soil_multiple_crops[<span class="st">'Scaled_Yield'</span>] <span class="op">=</span> df_soil_multiple_crops.groupby(<span class="st">'SoilFamily'</span>)[<span class="st">'Yield'</span>].transform(<span class="kw">lambda</span> x: scaler.fit_transform(x.values.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).flatten())</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">9</span>))</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df_soil_multiple_crops, x<span class="op">=</span><span class="st">'SoilFamily'</span>, y<span class="op">=</span><span class="st">'Scaled_Yield'</span>, hue<span class="op">=</span><span class="st">'CoverCropGroup'</span>, split<span class="op">=</span><span class="va">True</span>, inner<span class="op">=</span><span class="st">'quart'</span>, palette<span class="op">=</span><span class="st">'tab10'</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Yield Distribution per Soil Family by Cover Crop Group'</span>)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Soil Family'</span>)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Scaled Yield'</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Cover Crop Group'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipython-input-26-169645150.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_soil_multiple_crops['Scaled_Yield'] = df_soil_multiple_crops.groupby('SoilFamily')['Yield'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-40" class="cell" data-outputid="de1bd3db-4306-45f4-9bae-a14b2dad7e20" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through each unique soil family</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soil_family <span class="kw">in</span> df_soil_multiple_crops.SoilFamily.unique():</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter data for the current soil family</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    df_soil <span class="op">=</span> df_soil_multiple_crops[df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">==</span> soil_family]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if there is data for this soil family</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> df_soil.empty:</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>        sns.boxplot(data<span class="op">=</span>df_soil, x<span class="op">=</span><span class="st">'GrainCropGroup'</span>, y<span class="op">=</span><span class="st">'Scaled_Yield'</span>, hue<span class="op">=</span><span class="st">'CoverCropGroup'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="ss">f'</span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Grain Crop Group'</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'Yield (scaled)'</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>        plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>        plt.legend(title<span class="op">=</span><span class="st">'Cover Crop Group'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>        plt.tight_layout()</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No data available for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-25-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="check-significance-of-yieldgrain-crop-groupcover-crop-group-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="check-significance-of-yieldgrain-crop-groupcover-crop-group-relationships">Check significance of yield/grain crop group/cover crop group relationships</h3>
+<div id="cell-42" class="cell" data-outputid="8d643ddc-0520-419a-bc0a-6c3ef75cf508" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through each unique SoilFamily</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soil_family <span class="kw">in</span> df_soil_multiple_crops[<span class="st">'SoilFamily'</span>].unique():</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Analyzing SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter data for the current soil family</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    df_soil <span class="op">=</span> df_soil_multiple_crops[df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">==</span> soil_family].copy()</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if there is data for this soil family</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> df_soil.empty:</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Iterate through each unique GrainCropGroup within this soil family</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> grain_crop_group <span class="kw">in</span> df_soil[<span class="st">'GrainCropGroup'</span>].unique():</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  Analyzing GrainCropGroup: </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Filter data for the current grain crop group within this soil family</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>            df_grain_crop <span class="op">=</span> df_soil[df_soil[<span class="st">'GrainCropGroup'</span>] <span class="op">==</span> grain_crop_group].copy()</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Check if there are multiple CoverCropGroups to compare</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> df_grain_crop[<span class="st">'CoverCropGroup'</span>].nunique() <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Get the unique cover crop groups</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>                cover_crop_groups <span class="op">=</span> df_grain_crop[<span class="st">'CoverCropGroup'</span>].unique()</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Perform pairwise comparisons between cover crop groups using independent t-tests</span></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cover_crop_groups)):</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(cover_crop_groups)):</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>                        group1 <span class="op">=</span> cover_crop_groups[i]</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>                        group2 <span class="op">=</span> cover_crop_groups[j]</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>                        yields_group1 <span class="op">=</span> df_grain_crop[df_grain_crop[<span class="st">'CoverCropGroup'</span>] <span class="op">==</span> group1][<span class="st">'Scaled_Yield'</span>].dropna()</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>                        yields_group2 <span class="op">=</span> df_grain_crop[df_grain_crop[<span class="st">'CoverCropGroup'</span>] <span class="op">==</span> group2][<span class="st">'Scaled_Yield'</span>].dropna()</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># Ensure both groups have enough data for a t-test (at least 2 samples)</span></span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> <span class="bu">len</span>(yields_group1) <span class="op">&gt;=</span> <span class="dv">2</span> <span class="kw">and</span> <span class="bu">len</span>(yields_group2) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">try</span>:</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># Perform Levene's test for equal variances</span></span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>                                levene_stat, levene_p <span class="op">=</span> stats.levene(yields_group1, yields_group2)</span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>                                equal_var <span class="op">=</span> levene_p <span class="op">&gt;=</span> <span class="fl">0.05</span> <span class="co"># If p &gt;= 0.05, assume equal variances</span></span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># Perform independent t-test</span></span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>                                t_stat, p_value <span class="op">=</span> stats.ttest_ind(yields_group1, yields_group2, equal_var<span class="op">=</span>equal_var)</span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>                                <span class="bu">print</span>(<span class="ss">f"    Comparison between </span><span class="sc">{</span>group1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>group2<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>                                <span class="bu">print</span>(<span class="ss">f"      Levene's Test p-value: </span><span class="sc">{</span>levene_p<span class="sc">:.4f}</span><span class="ss"> (Assuming equal variances: </span><span class="sc">{</span>equal_var<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>                                <span class="bu">print</span>(<span class="ss">f"      Independent t-test p-value: </span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># Interpret the result</span></span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>                                alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>                                <span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>                                    <span class="bu">print</span>(<span class="ss">f"      Result: Scaled_Yield is significantly different between </span><span class="sc">{</span>group1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>group2<span class="sc">}</span><span class="ss"> (p &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>                                <span class="cf">else</span>:</span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>                                    <span class="bu">print</span>(<span class="ss">f"      Result: There is no statistically significant difference in Scaled_Yield between </span><span class="sc">{</span>group1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>group2<span class="sc">}</span><span class="ss"> (p &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>                                <span class="bu">print</span>(<span class="ss">f"      Could not perform t-test for </span><span class="sc">{</span>group1<span class="sc">}</span><span class="ss"> vs </span><span class="sc">{</span>group2<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">else</span>:</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>                            <span class="bu">print</span>(<span class="ss">f"    Not enough data to compare </span><span class="sc">{</span>group1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>group2<span class="sc">}</span><span class="ss"> (need at least 2 samples in each group)."</span>)</span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> df_grain_crop[<span class="st">'CoverCropGroup'</span>].nunique() <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a>                 <span class="bu">print</span>(<span class="ss">f"  Only one CoverCropGroup ('</span><span class="sc">{</span>df_grain_crop[<span class="st">'CoverCropGroup'</span>]<span class="sc">.</span>iloc[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">') for </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">. Cannot perform comparison."</span>)</span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a>                 <span class="bu">print</span>(<span class="ss">f"  No CoverCropGroup data available for </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No data available for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Analyzing SoilFamily: Mesic Aquic Fragiudalf
+  Analyzing GrainCropGroup: Corn
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.8904 (Assuming equal variances: True)
+      Independent t-test p-value: 0.6403
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Soybean
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.8729 (Assuming equal variances: True)
+      Independent t-test p-value: 0.9234
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Corn-soybean
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.2413 (Assuming equal variances: True)
+      Independent t-test p-value: 0.8458
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+
+Analyzing SoilFamily: Dystric cambisol on granite bedrock
+  Analyzing GrainCropGroup: Corn-wheat
+    Not enough data to compare Rye and No (need at least 2 samples in each group).
+  Analyzing GrainCropGroup: Wheat
+    Not enough data to compare Rye and No (need at least 2 samples in each group).
+  Analyzing GrainCropGroup: Corn
+    Not enough data to compare Rye and No (need at least 2 samples in each group).
+
+Analyzing SoilFamily: Haplic luvisol on calcareous bedrock
+  Analyzing GrainCropGroup: Wheat
+    Comparison between Brassica and No:
+      Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+      Independent t-test p-value: 0.5568
+      Result: There is no statistically significant difference in Scaled_Yield between Brassica and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Arable
+    Comparison between Brassica and No:
+      Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+      Independent t-test p-value: 0.2856
+      Result: There is no statistically significant difference in Scaled_Yield between Brassica and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Vegetable
+    Comparison between Brassica and No:
+      Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+      Independent t-test p-value: 0.9630
+      Result: There is no statistically significant difference in Scaled_Yield between Brassica and No (p &gt;= 0.05).
+
+Analyzing SoilFamily: Mesic Vertic Epiaqualf
+  Analyzing GrainCropGroup: Corn
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.4802 (Assuming equal variances: True)
+      Independent t-test p-value: 0.7163
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Soybean
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.5998 (Assuming equal variances: True)
+      Independent t-test p-value: 0.0947
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Wheat
+    Comparison between Rye and No:
+      Levene's Test p-value: 0.6539 (Assuming equal variances: True)
+      Independent t-test p-value: 0.6311
+      Result: There is no statistically significant difference in Scaled_Yield between Rye and No (p &gt;= 0.05).
+
+Analyzing SoilFamily: Typic Hapludult
+  Analyzing GrainCropGroup: Unknown
+    Comparison between No and Mixed:
+      Levene's Test p-value: 0.2676 (Assuming equal variances: True)
+      Independent t-test p-value: 0.1163
+      Result: There is no statistically significant difference in Scaled_Yield between No and Mixed (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Corn
+  Only one CoverCropGroup ('No') for Corn. Cannot perform comparison.
+  Analyzing GrainCropGroup: Wheat
+  Only one CoverCropGroup ('No') for Wheat. Cannot perform comparison.
+
+Analyzing SoilFamily: Haplic Luvisols
+  Analyzing GrainCropGroup: Maize
+    Comparison between Mixed and No:
+      Levene's Test p-value: 0.4566 (Assuming equal variances: True)
+      Independent t-test p-value: 0.0884
+      Result: There is no statistically significant difference in Scaled_Yield between Mixed and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Wheat
+    Comparison between Mixed and No:
+      Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+      Independent t-test p-value: 0.0028
+      Result: Scaled_Yield is significantly different between Mixed and No (p &lt; 0.05).
+  Analyzing GrainCropGroup: Soybean
+    Comparison between Mixed and No:
+      Levene's Test p-value: 0.0000 (Assuming equal variances: False)
+      Independent t-test p-value: 0.0885
+      Result: There is no statistically significant difference in Scaled_Yield between Mixed and No (p &gt;= 0.05).
+  Analyzing GrainCropGroup: Orchard
+  Only one CoverCropGroup ('No') for Orchard. Cannot perform comparison.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.11/dist-packages/scipy/stats/_morestats.py:3057: RuntimeWarning: divide by zero encountered in scalar divide
+  W = numer / denom</code></pre>
+</div>
+</div>
+<div id="cell-43" class="cell" data-outputid="86e04672-511f-43ec-db13-ed103e8da5ae" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply Shapiro-Wilk test to check for normality of Scaled_Yield</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through each unique SoilFamily and GrainCropGroup combination with sufficient data</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soil_family <span class="kw">in</span> df_soil_multiple_crops[<span class="st">'SoilFamily'</span>].unique():</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> grain_crop_group <span class="kw">in</span> df_soil_multiple_crops[df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">==</span> soil_family][<span class="st">'GrainCropGroup'</span>].unique():</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Filter data for the current combination</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>        df_combination <span class="op">=</span> df_soil_multiple_crops[(df_soil_multiple_crops[<span class="st">'SoilFamily'</span>] <span class="op">==</span> soil_family) <span class="op">&amp;</span> (df_soil_multiple_crops[<span class="st">'GrainCropGroup'</span>] <span class="op">==</span> grain_crop_group)].copy()</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if there's enough data (at least 3 samples are generally recommended for Shapiro-Wilk)</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(df_combination) <span class="op">&gt;=</span> <span class="dv">3</span>:</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get the Scaled_Yield data</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>            scaled_yield_data <span class="op">=</span> df_combination[<span class="st">'Scaled_Yield'</span>].dropna()</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(scaled_yield_data) <span class="op">&gt;=</span> <span class="dv">3</span>:</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Perform Shapiro-Wilk test</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>                    shapiro_statistic, shapiro_p_value <span class="op">=</span> stats.shapiro(scaled_yield_data)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shapiro-Wilk Test for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">, GrainCropGroup: </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"  Shapiro-Wilk Statistic: </span><span class="sc">{</span>shapiro_statistic<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"  P-value: </span><span class="sc">{</span>shapiro_p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Interpret the result</span></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>                    alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> shapiro_p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">print</span>(<span class="ss">f"  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">else</span>:</span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">print</span>(<span class="ss">f"  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"  Could not perform Shapiro-Wilk test for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">, GrainCropGroup: </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Not enough non-null data (need at least 3) for Shapiro-Wilk Test for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">, GrainCropGroup: </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Not enough data (need at least 3 samples) for Shapiro-Wilk Test for SoilFamily: </span><span class="sc">{</span>soil_family<span class="sc">}</span><span class="ss">, GrainCropGroup: </span><span class="sc">{</span>grain_crop_group<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Shapiro-Wilk Test for SoilFamily: Mesic Aquic Fragiudalf, GrainCropGroup: Corn
+  Shapiro-Wilk Statistic: 0.8803
+  P-value: 0.1895
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Mesic Aquic Fragiudalf, GrainCropGroup: Soybean
+  Shapiro-Wilk Statistic: 0.6621
+  P-value: 0.0008
+  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Mesic Aquic Fragiudalf, GrainCropGroup: Corn-soybean
+  Shapiro-Wilk Statistic: 0.9362
+  P-value: 0.5742
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Not enough data (need at least 3 samples) for Shapiro-Wilk Test for SoilFamily: Dystric cambisol on granite bedrock, GrainCropGroup: Corn-wheat
+
+Not enough data (need at least 3 samples) for Shapiro-Wilk Test for SoilFamily: Dystric cambisol on granite bedrock, GrainCropGroup: Wheat
+
+Not enough data (need at least 3 samples) for Shapiro-Wilk Test for SoilFamily: Dystric cambisol on granite bedrock, GrainCropGroup: Corn
+
+Shapiro-Wilk Test for SoilFamily: Haplic luvisol on calcareous bedrock, GrainCropGroup: Wheat
+  Shapiro-Wilk Statistic: 0.9202
+  P-value: 0.5381
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Haplic luvisol on calcareous bedrock, GrainCropGroup: Arable
+  Shapiro-Wilk Statistic: 0.8947
+  P-value: 0.4051
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Haplic luvisol on calcareous bedrock, GrainCropGroup: Vegetable
+  Shapiro-Wilk Statistic: 0.7599
+  P-value: 0.0476
+  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Mesic Vertic Epiaqualf, GrainCropGroup: Corn
+  Shapiro-Wilk Statistic: 0.9771
+  P-value: 0.8375
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Mesic Vertic Epiaqualf, GrainCropGroup: Soybean
+  Shapiro-Wilk Statistic: 0.9223
+  P-value: 0.0657
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Mesic Vertic Epiaqualf, GrainCropGroup: Wheat
+  Shapiro-Wilk Statistic: 0.9625
+  P-value: 0.4899
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Typic Hapludult, GrainCropGroup: Unknown
+  Shapiro-Wilk Statistic: 0.8458
+  P-value: 0.0118
+  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Typic Hapludult, GrainCropGroup: Corn
+  Shapiro-Wilk Statistic: 0.8715
+  P-value: 0.0153
+  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Typic Hapludult, GrainCropGroup: Wheat
+  Shapiro-Wilk Statistic: 0.9374
+  P-value: 0.3858
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Haplic Luvisols, GrainCropGroup: Maize
+  Shapiro-Wilk Statistic: 0.9133
+  P-value: 0.3776
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Haplic Luvisols, GrainCropGroup: Wheat
+  Shapiro-Wilk Statistic: 0.7353
+  P-value: 0.0279
+  Result: The Scaled_Yield distribution for this combination is likely not normal (p &lt; 0.05).
+
+Shapiro-Wilk Test for SoilFamily: Haplic Luvisols, GrainCropGroup: Soybean
+  Shapiro-Wilk Statistic: 0.8536
+  P-value: 0.2379
+  Result: The Scaled_Yield distribution for this combination is likely normal (p &gt;= 0.05).
+
+Not enough data (need at least 3 samples) for Shapiro-Wilk Test for SoilFamily: Haplic Luvisols, GrainCropGroup: Orchard</code></pre>
+</div>
+</div>
+<div id="cell-44" class="cell" data-outputid="4287b5f0-8913-4958-8068-9fade770452e" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe for correlation analysis</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df_correlation <span class="op">=</span> df_soil_multiple_crops[[<span class="st">'SoilFamily'</span>, <span class="st">'CoverCropGroup'</span>, <span class="st">'Scaled_Yield'</span>]].copy()</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot table for heatmap visualization</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We will calculate the average scaled yield for each combination of SoilFamily and CoverCropGroup</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>heatmap_data <span class="op">=</span> df_correlation.pivot_table(index<span class="op">=</span><span class="st">'SoilFamily'</span>, columns<span class="op">=</span><span class="st">'CoverCropGroup'</span>, values<span class="op">=</span><span class="st">'Scaled_Yield'</span>, aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>sns.heatmap(heatmap_data, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Scaled Yield by Soil Family and Cover Crop Group'</span>)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cover Crop Group'</span>)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Soil Family'</span>)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="additionally-analyse-to-check-if-cover-crops-effect-crop-yield-not-considering-soil-family" class="level2">
+<h2 class="anchored" data-anchor-id="additionally-analyse-to-check-if-cover-crops-effect-crop-yield-not-considering-soil-family">additionally, analyse to check if cover crops effect crop yield (not considering soil family)</h2>
+<div id="cell-46" class="cell" data-outputid="20883648-65cb-45bb-f56d-6adb672b322b" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'CoverCropGroup' and 'Scaled_Yield' columns are present and have no missing values for this analysis</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>df_subset_anova <span class="op">=</span> df_subset[[<span class="st">'CoverCropGroup'</span>, <span class="st">'Yield_scaled'</span>]].dropna().copy()</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform One-Way ANOVA</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The formula 'Scaled_Yield ~ C(CoverCropGroup)' specifies Scaled_Yield as the dependent variable</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and CoverCropGroup as the independent categorical variable. C() indicates that CoverCropGroup should be treated as categorical.</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> ols(<span class="st">'Yield_scaled ~ C(CoverCropGroup)'</span>, data<span class="op">=</span>df_subset_anova).fit()</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    anova_table <span class="op">=</span> sm.stats.anova_lm(model, typ<span class="op">=</span><span class="dv">2</span>) <span class="co"># Type 2 ANOVA</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">One-Way ANOVA: Effect of CoverCropGroup on Yield_scaled (ignoring SoilFamily)"</span>)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(anova_table)</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Interpret the ANOVA result</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>    p_value <span class="op">=</span> anova_table[<span class="st">'PR(&gt;F)'</span>].iloc[<span class="dv">0</span>] <span class="co"># Get the p-value for CoverCropGroup</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Result: The mean scaled yield is significantly different across different CoverCropGroups (p &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Result: There is no statistically significant difference in mean scaled yield across different CoverCropGroups (p &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Could not perform One-Way ANOVA: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Please ensure 'CoverCropGroup' is a valid column and 'Scaled_Yield' has been calculated correctly on df_subset."</span>)</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a><span class="co"># To visualize this, we can use a boxplot or violin plot of Scaled_Yield by CoverCropGroup</span></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df_subset_anova, x<span class="op">=</span><span class="st">'CoverCropGroup'</span>, y<span class="op">=</span><span class="st">'Yield_scaled'</span>,hue<span class="op">=</span><span class="st">'CoverCropGroup'</span>,  palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scaled Yield Distribution by Cover Crop Group (Overall)'</span>)</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cover Crop Group'</span>)</span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Scaled Yield'</span>)</span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df_subset_anova, x<span class="op">=</span><span class="st">'CoverCropGroup'</span>, y<span class="op">=</span><span class="st">'Yield_scaled'</span>, hue<span class="op">=</span><span class="st">'CoverCropGroup'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>, inner<span class="op">=</span><span class="st">'quart'</span>)</span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scaled Yield Distribution by Cover Crop Group (Overall)'</span>)</span>
+<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cover Crop Group'</span>)</span>
+<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Scaled Yield'</span>)</span>
+<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+One-Way ANOVA: Effect of CoverCropGroup on Yield_scaled (ignoring SoilFamily)
+                      sum_sq      df         F        PR(&gt;F)
+C(CoverCropGroup)   0.940988    14.0  6.297956  1.290184e-12
+Residual           35.517279  3328.0       NaN           NaN
+  Result: The mean scaled yield is significantly different across different CoverCropGroups (p &lt; 0.05).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipython-input-42-3933671685.py:29: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  p_value = anova_table['PR(&gt;F)'][0] # Get the p-value for CoverCropGroup</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-29-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="question_3_4_files/figure-html/cell-29-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
