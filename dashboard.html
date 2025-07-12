@@ -107,11 +107,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#conservation-plots" id="toc-conservation-plots" class="nav-link active" data-scroll-target="#conservation-plots">Conservation Plots</a></li>
-  <li><a href="#example-plots" id="toc-example-plots" class="nav-link" data-scroll-target="#example-plots">Example plots</a></li>
-  <li><a href="#optional-save-as-images-if-needed" id="toc-optional-save-as-images-if-needed" class="nav-link" data-scroll-target="#optional-save-as-images-if-needed">Optional: save as images if needed</a></li>
-  <li><a href="#fig-sp.boxplot_soil_bd_by_conservationdf_filtered" id="toc-fig-sp.boxplot_soil_bd_by_conservationdf_filtered" class="nav-link" data-scroll-target="#fig-sp.boxplot_soil_bd_by_conservationdf_filtered">fig = sp.boxplot_soil_bd_by_conservation(df_filtered)</a></li>
-  <li><a href="#fig.savefigplotsboxplot.png" id="toc-fig.savefigplotsboxplot.png" class="nav-link" data-scroll-target="#fig.savefigplotsboxplot.png">fig.savefig(“plots/boxplot.png”)</a></li>
+  <li><a href="#dashboard" id="toc-dashboard" class="nav-link active" data-scroll-target="#dashboard">📊 Dashboard</a></li>
   </ul>
 </nav>
     </div>
@@ -137,28 +133,277 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="conservation-plots" class="level1">
-<h1>Conservation Plots</h1>
-<p>import pandas as pd import plot_modules.soil_plots as sp</p>
-<p>df = pd.read_excel(“data/SoilHealthDB_V2.xlsx”) df_filtered = df.copy()</p>
-</section>
-<section id="example-plots" class="level1">
-<h1>Example plots</h1>
-<p>sp.boxplot_soil_bd_by_conservation(df_filtered) sp.barplot_mean_sd_soil_bd(df_filtered)</p>
-</section>
-<section id="optional-save-as-images-if-needed" class="level1">
-<h1>Optional: save as images if needed</h1>
-</section>
-<section id="fig-sp.boxplot_soil_bd_by_conservationdf_filtered" class="level1">
-<h1>fig = sp.boxplot_soil_bd_by_conservation(df_filtered)</h1>
-</section>
-<section id="fig.savefigplotsboxplot.png" class="level1">
-<h1>fig.savefig(“plots/boxplot.png”)</h1>
-<p>import plot_modules.cover_crop_plots as cp</p>
-<p>df_soc = df[[‘CoverCropGroup’, ‘BackgroundSOC’, ‘Country’]].dropna() df_soc[‘Country’] = df_soc[‘Country’].astype(str).str.strip().str.title()</p>
-<p>cp.boxplot_soc(df_soc) cp.barplot_country_freq(df_soc) cp.heatmap_soc_means(df_soc)</p>
-<p>import plot_modules.soil_crop_yield_plots as scp</p>
-<p>df_yield = scp.prepare_soil_crop_data(df.copy()) scp.plot_yield_by_soil_crop(df_yield) scp.plot_anova_cover_crop_effect(df_yield)</p>
+<section id="dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard">📊 Dashboard</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Conservation Plots</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cover Crop Plots</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Soil &amp; Crop Yield</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="563dfef7" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-3-output-1.png" width="1283" height="612" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-3-output-2.png" width="1283" height="612" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d00e5fee" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-4-output-1.png" width="1275" height="612" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-4-output-2.png" width="1275" height="612" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d342e7a6" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-5-output-1.png" width="623" height="616" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-5-output-2.png" width="623" height="616" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ca05c421" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-6-output-1.png" width="1489" height="2112" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-6-output-2.png" width="1489" height="2112" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="9d5999d5" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-7-output-1.png" width="1489" height="2112" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-7-output-2.png" width="1489" height="2112" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="9cdbd60c" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-8-output-1.png" width="609" height="544" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-8-output-2.png" width="609" height="544" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="4d0b7d80" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-9-output-1.png" width="1328" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-9-output-2.png" width="1328" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="dedd49b0" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-10-output-1.png" width="944" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-10-output-2.png" width="944" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="d8a906f5" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-11-output-1.png" width="886" height="559" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-11-output-2.png" width="886" height="559" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="c2cfdffc" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-12-output-1.png" width="1411" height="740" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-12-output-2.png" width="1411" height="740" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e03fdf23" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-13-output-1.png" width="1329" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-13-output-2.png" width="1329" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="ceacdc38" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-14-output-1.png" width="1099" height="752" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-14-output-2.png" width="1099" height="752" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b4ab3a6b" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-15-output-1.png" width="2876" height="1139" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-15-output-2.png" width="2876" height="1139" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b7a2fbfa" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-16-output-1.png" width="1507" height="848" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-16-output-2.png" width="1507" height="848" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1be10525" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-17-output-1.png" width="946" height="656" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-17-output-2.png" width="946" height="656" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="fd333d7d" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-18-output-1.png" width="944" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dashboard_files/figure-html/cell-18-output-2.png" width="944" height="560" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
