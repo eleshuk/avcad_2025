@@ -65,7 +65,7 @@
   {
     "objectID": "dashboard.html",
     "href": "dashboard.html",
-    "title": "Soil Health Dashboard (Static Version)",
+    "title": "Soil Health Dashboard",
     "section": "",
     "text": "Conservation Plots\nimport pandas as pd import plot_modules.soil_plots as sp\ndf = pd.read_excel(“data/SoilHealthDB_V2.xlsx”) df_filtered = df.copy()\n\n\nExample plots\nsp.boxplot_soil_bd_by_conservation(df_filtered) sp.barplot_mean_sd_soil_bd(df_filtered)\n\n\nOptional: save as images if needed\n\n\nfig = sp.boxplot_soil_bd_by_conservation(df_filtered)\n\n\nfig.savefig(“plots/boxplot.png”)\nimport plot_modules.cover_crop_plots as cp\ndf_soc = df[[‘CoverCropGroup’, ‘BackgroundSOC’, ‘Country’]].dropna() df_soc[‘Country’] = df_soc[‘Country’].astype(str).str.strip().str.title()\ncp.boxplot_soc(df_soc) cp.barplot_country_freq(df_soc) cp.heatmap_soc_means(df_soc)\nimport plot_modules.soil_crop_yield_plots as scp\ndf_yield = scp.prepare_soil_crop_data(df.copy()) scp.plot_yield_by_soil_crop(df_yield) scp.plot_anova_cover_crop_effect(df_yield)"
   },
