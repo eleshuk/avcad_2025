@@ -155,3 +155,6 @@ def server(input, output, session):
         return scp.plot_anova_cover_crop_effect(df_yield)
 
 app = App(app_ui, server)
+
+if __name__ == "__main__":
+    app.run()

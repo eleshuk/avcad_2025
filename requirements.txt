@@ -157,7 +157,6 @@ prometheus_client==0.20.0
 prompt-toolkit==3.0.36
 psutil==6.0.0
 psygnal==0.11.1
-ptitprince @ git+https://github.com/pog87/PtitPrince.git@a084d65862df91d0b27a631d03e2832668622971
 ptyprocess==0.7.0
 pure_eval==0.2.3
 pyasn1==0.6.1
