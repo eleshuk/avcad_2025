@@ -2,7 +2,7 @@ from shiny import App, ui, render
 import pandas as pd
 import plot_modules.soil_plots as sp
 import plot_modules.cover_crop_plots as cp
-import plot_modules.soil_crop_yield_plots as scp  # NEW MODULE
+import plot_modules.soil_crop_yield_plots as scp 
 
 # Load data
 df = pd.read_excel("data/SoilHealthDB_V2.xlsx")
@@ -26,16 +26,61 @@ df_soil_multiple_crops = df_yield[df_yield['SoilFamily'].isin(
 app_ui = ui.page_fluid(
     ui.navset_tab(
         ui.nav_panel("Conservation Plots",
+            ui.br(),
+            ui.h3("Exploratory Analysis"),
+            ui.p(f"""
+                This plot shows a comparison of soil physical conditions
+                under different management strategies across countries. The results suggest that while most
+                conservation types fall within a similar bulk density range, some
+                practices, particularly combinations involving no-till (NT) and cover crops (CC), tend to exhibit
+                lower median SoilBD in several countries.
+                 """),
             ui.output_plot("boxplot_soilbd"),
             ui.br(),
+            ui.br(),
+            ui.p(f"""
+                    Barplot showing the mean SoilBD ± standard deviation for each conservation
+                    type across the top five countries. The data was grouped by Conservation_Type and Country to
+                    calculate the average and variability in SoilBD
+                 """),
             ui.output_plot("barplot_meansd"),
             ui.br(),
+            ui.br(),
+            ui.h3("Inferrential Statistics"),
+            ui.p(f"""
+                Correlation matrix of key soil indicators, demonstrates strong
+                positive correlations between biological indicators like microbial biomass (MBC_C) and organic
+                carbon (OC_C), suggesting that improvements in organic matter content may enhance microbial
+                activity.
+                """),
             ui.row(
                 ui.column(6, ui.output_plot("corr_heatmap"), align="center", offset=3)
             ),
             ui.br(),
+            ui.br(),
+            ui.p(f"""
+                Three indicators, OC_C, MBC_C, and SoilpH, showed statistically significant main effects of
+                Conservation_Type (p < 0.05) and were selected for deeper investigation. 
+                """),
+            ui.p(f"""
+                Comparative boxplots grouped by conservation type and colored by country, illustrating both
+                within-group variability and geographic trends. 
+                """),
             ui.output_plot("boxplot_multiple", height="1400px"),
             ui.br(),
+            ui.br(),
+            ui.p(f"""
+                These visualizations suggest that conservation
+                practices can meaningfully influence soil conditions, although the magnitude and direction of
+                effects vary across countries, consistent with the presence of significant interaction terms in the
+                ANOVA results.
+                """),
+            ui.br(),
+            ui.br(),
+            ui.p(
+                ui.tags.b(f"""
+                 Violin plots showing the same visualization as the boxplots.
+                """)),
             ui.output_plot("violin_multiple", height="1400px")
         ),
         ui.nav_panel("Cover Crop Plots",

@@ -78,15 +78,58 @@ def heatmap_soil_indicators(df, indicators):
 
 import matplotlib.gridspec as gridspec
 
+# def boxplot_multi(df, indicators, top_n=8):
+#     n = len(indicators)
+#     # fig = plt.figure(figsize=(14, 9 * n))
+#     fig = plt.figure(figsize=(14, 9 * n), constrained_layout=True)
+#     gs = gridspec.GridSpec(n, 1, height_ratios=[1] * n)
+#     axes = []
+
+#     for i, indicator in enumerate(indicators):
+#         ax = fig.add_subplot(gs[i])
+#         axes.append(ax)
+#         temp_df = df[['Conservation_Type', 'Country', indicator]].dropna()
+#         top_types = temp_df['Conservation_Type'].value_counts().head(top_n).index
+#         temp_df = temp_df[temp_df['Conservation_Type'].isin(top_types)]
+
+#         sns.boxplot(
+#             data=temp_df,
+#             x='Conservation_Type',
+#             y=indicator,
+#             hue='Country',
+#             palette='Set2',
+#             ax=ax,
+#             width=1.5
+#         )
+
+#         ax.set_title(f'{indicator} by Conservation Practice and Country', fontsize=14)
+#         ax.set_xlabel('Conservation Type', fontsize=12)
+#         ax.set_ylabel(indicator, fontsize=12)
+#         ax.tick_params(axis='x', rotation=45)
+#         ax.legend().remove()
+
+#     # Shared legend
+#     handles, labels = axes[-1].get_legend_handles_labels()
+#     fig.legend(handles, labels, title="Country", bbox_to_anchor=(1.02, 0.5), loc='center left')
+#     # fig.subplots_adjust(hspace=0.6)
+#     return fig
+
 def boxplot_multi(df, indicators, top_n=8):
+    import matplotlib.pyplot as plt
+    from matplotlib import gridspec
+    import seaborn as sns
+
     n = len(indicators)
     fig = plt.figure(figsize=(14, 9 * n))
-    gs = gridspec.GridSpec(n, 1, height_ratios=[1] * n)
+    # gs = gridspec.GridSpec(n, 1, height_ratios=[1] * n, left=0.15, right=0.75)  # widen left & right margins
+    gs = gridspec.GridSpec(n, 1, height_ratios=[1] * n, left=0.1, right=0.7, top=0.95, bottom=0.05, hspace=0.6)
+
     axes = []
 
     for i, indicator in enumerate(indicators):
         ax = fig.add_subplot(gs[i])
         axes.append(ax)
+
         temp_df = df[['Conservation_Type', 'Country', indicator]].dropna()
         top_types = temp_df['Conservation_Type'].value_counts().head(top_n).index
         temp_df = temp_df[temp_df['Conservation_Type'].isin(top_types)]
@@ -98,7 +141,7 @@ def boxplot_multi(df, indicators, top_n=8):
             hue='Country',
             palette='Set2',
             ax=ax,
-            width=1.5
+            width=0.6  # was 1.5 — made narrower to avoid overflow
         )
 
         ax.set_title(f'{indicator} by Conservation Practice and Country', fontsize=14)
@@ -109,13 +152,19 @@ def boxplot_multi(df, indicators, top_n=8):
 
     # Shared legend
     handles, labels = axes[-1].get_legend_handles_labels()
-    fig.legend(handles, labels, title="Country", bbox_to_anchor=(1.02, 0.5), loc='center left')
-    fig.subplots_adjust(hspace=0.6)
+    fig.legend(handles, labels, title="Country", bbox_to_anchor=(0.82, 0.5), loc='center left')
+    # fig.legend(handles, labels, title="Country", bbox_to_anchor=(1.01, 0.5), loc="center left")
+
+
+    # Force tight layout
+    # fig.tight_layout(rect=[1, 1, 1, 1])
     return fig
+
 
 def violinplot_multi(df, indicators, top_n=8):
     n = len(indicators)
-    fig = plt.figure(figsize=(14, 9 * n))
+    # fig = plt.figure(figsize=(14, 9 * n))
+    fig = plt.figure(figsize=(14, 9 * n), constrained_layout=True)
     gs = gridspec.GridSpec(n, 1, height_ratios=[1] * n)
     axes = []
 
@@ -145,7 +194,7 @@ def violinplot_multi(df, indicators, top_n=8):
     # Shared legend
     handles, labels = axes[-1].get_legend_handles_labels()
     fig.legend(handles, labels, title="Country", bbox_to_anchor=(1.02, 0.5), loc='center left')
-    fig.subplots_adjust(hspace=0.6)
+    # fig.subplots_adjust(hspace=0.6)
     return fig
 
 
